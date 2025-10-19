@@ -1,3 +1,6 @@
+[⬅ Retour à l'accueil](#README.md)
+<br/>
+
 # Installer syslog-ng
 
 Syslog-ng est un démon open source de gestion des journaux, fournissant l'implémentation du protocole Syslog pour les systèmes Unix et similaires. Vous pouvez installer Syslog-ng pour la gestion des journaux sources. Consultez [la section Source Syslog Cloud](/help/docs/send-data/hosted-collectors/cloud-syslog-source/) pour plus d'informations sur la configuration d'une source Syslog Cloud pour Syslog-ng.
@@ -60,3 +63,6 @@ Si vous recevez le message d'erreur **Impossible de localiser le paquet syslog-n
 ```
 $ sudo apt update$ sudo apt upgrade
 ```
+<br/><br/>
+
+[⬅ Retour à l'accueil](#README.md)

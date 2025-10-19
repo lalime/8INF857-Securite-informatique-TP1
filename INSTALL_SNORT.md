@@ -1,3 +1,6 @@
+[⬅ Retour à l'accueil](#README.md)
+<br/>
+
 ## 🛡️ III. Intégration IDS/IPS (Snort)
 
 Cette documentation détaille l'installation, la configuration de **Snort (IDS/IPS)**, et son intégration avec **syslog-ng** pour analyser le trafic réseau et transmettre les alertes dans un fichier ou via Syslog.
@@ -303,3 +306,6 @@ Vous devez recevoir une réponse avec `"result": "created"`.
 * Ne donnez pas plus de privilèges que nécessaire
 * Isolez les index par application (ex. : `syslog-ng-*`, `audit-*`, etc.)
 * Utilisez un pipeline d'ingestion pour parser les messages côté Elasticsearch si besoin
+
+<br/><br/>
+[⬅ Retour à l'accueil](#README.md)
