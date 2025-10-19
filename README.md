@@ -56,12 +56,7 @@ Bien que l'installation détaillée dépasse le cadre de ce document, voici les 
 1.  **Elasticsearch :** Configurer `elasticsearch.yml` pour la grappe et l'écoute réseau. Démarrer le service.
 2.  **Kibana :** Configurer `kibana.yml` pour pointer vers Elasticsearch. Démarrer le service et vérifier l'accès via le navigateur.
 
-### Étape 3 : Intégration IDS/IPS (Ex. : Snort)
-
-1.  Installer et configurer l'IDS/IPS pour analyser le trafic réseau pertinent.
-2.  Configurer l'IDS pour qu'il écrive ses alertes de sécurité dans un fichier log que `syslog-ng` pourra lire, ou qu'il les envoie directement en Syslog.
-
-### Étape 4 : Configuration de syslog-ng
+### [Étape 3 : Installation et Configuration de syslog-ng](INSTALL_CONFIG_SYSLOG.md)
 
 1.  Installer les modules `syslog-ng` nécessaires, notamment le module **HTTP** ou **Elasticsearch** (si disponible).
 2.  Éditer le fichier `/etc/syslog-ng/syslog-ng.conf` pour définir :
@@ -69,8 +64,16 @@ Bien que l'installation détaillée dépasse le cadre de ce document, voici les 
     * **Destination :** Un bloc `destination` pointant vers l'API HTTP d'Elasticsearch.
     * **Log :** Lier les sources aux destinations pour créer le pipeline de logs.
 3.  Redémarrer `syslog-ng` : `sudo systemctl restart syslog-ng`.
+ 
 
-### Étape 5 : Création des Tableaux de Bord (Kibana)
+
+### [Étape 4 : Intégration IDS/IPS (Ex. : Snort)](INSTALL_SNORT.md)
+
+1.  Installer et configurer l'IDS/IPS pour analyser le trafic réseau pertinent.
+2.  Configurer l'IDS pour qu'il écrive ses alertes de sécurité dans un fichier log que `syslog-ng` pourra lire, ou qu'il les envoie directement en Syslog.
+
+
+### [Étape 5 : Création des Tableaux de Bord (Kibana)](KIBANA_DASHBOARD.md)
 
 1.  Dans l'interface Kibana, créer un **Index Pattern** pour interroger les données récemment reçues dans Elasticsearch (ex. : `syslog-*`).
 2.  Utiliser l'outil **Visualize** pour construire des graphiques et des métriques basées sur les champs d'alerte IDS ou les logs critiques.
@@ -96,3 +99,4 @@ Bien que l'installation détaillée dépasse le cadre de ce document, voici les 
 
 ## References
 - https://letsdefend.io/blog/how-to-install-and-configure-snort-on-ubuntu
+- https://www.sumologic.com/help/docs/send-data/hosted-collectors/cloud-syslog-source/install-syslog-ng/
