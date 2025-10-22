@@ -1,3 +1,5 @@
+[⬅ Retour à l'accueil](README.md)
+
 ## 🛡️ Étapes 1 & 2 : Installation et configuration de l’Elastic Stack (Elasticsearch + Kibana)
 Cette documentation détaille la préparation de la machine Linux, l’installation et la configuration d’**Elasticsearch** et **Kibana**, éléments centraux de la Stack ELK utilisés pour le stockage, la recherche et la visualisation des logs collectés.
 
