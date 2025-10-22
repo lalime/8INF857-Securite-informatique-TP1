@@ -46,12 +46,14 @@ Le flux de données est linéaire, allant de la source (équipements réseau/IDS
 
 Bien que l'installation détaillée dépasse le cadre de ce document, voici les étapes clés :
 
-### Étape 1 : Préparation de la Machine Linux
+### Étape 1 : Préparation de la Machine Linux(INSTALL_CONFIG_ELASTIC_STACK.md)
+
 
 1.  Installer **Java Runtime Environment (JRE)**, car Elasticsearch en dépend.
 2.  Installer la suite complète **Elastic Stack (Elasticsearch, Kibana)**.
 
-### Étape 2 : Installation et Configuration d'Elasticsearch et Kibana
+### Étape 2 : Installation et Configuration d'Elasticsearch et Kibana(INSTALL_CONFIG_ELASTIC_STACK.md)
+
 
 1.  **Elasticsearch :** Configurer `elasticsearch.yml` pour la grappe et l'écoute réseau. Démarrer le service.
 2.  **Kibana :** Configurer `kibana.yml` pour pointer vers Elasticsearch. Démarrer le service et vérifier l'accès via le navigateur.
