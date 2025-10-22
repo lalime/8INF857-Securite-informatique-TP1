@@ -74,7 +74,7 @@ include $RULE_PATH/community-rules/community.rules
 ### 🧪 Tester la configuration
 
 ```bash
-sudo snort -T -c /etc/snort/snort.conf -i eth0
+sudo snort -T -c /etc/snort/snort.conf -i ens33
 ```
 
 ✅ Corriger toute erreur avant de continuer.
@@ -84,12 +84,12 @@ sudo snort -T -c /etc/snort/snort.conf -i eth0
 ### 🚀 Lancer Snort en mode IDS (console)
 
 ```bash
-sudo snort -c /etc/snort/snort.conf -i eth0 -A console
+sudo snort -c /etc/snort/snort.conf -i ens33 -A console
 ```
 
 Options :
 
-* `-i eth0` : interface réseau à surveiller
+* `-i ens33` : interface réseau à surveiller
 * `-A console` : affiche les alertes en temps réel
 
 ---
@@ -108,7 +108,7 @@ output alert_fast: /var/log/snort/alerts.log
 Puis relancer Snort :
 
 ```bash
-sudo snort -c /etc/snort/snort.conf -i eth0 -l /var/log/snort
+sudo snort -c /etc/snort/snort.conf -i ens33 -l /var/log/snort
 ```
 
 #### 🛠️ Configurer syslog-ng pour lire ce fichier
@@ -120,17 +120,23 @@ source s_snort {
     file("/var/log/snort/alerts.log" follow_freq(1) flags(no-parse));
 };
 
-destination d_elasticsearch {
-    elasticsearch2(
-        index("snort_logs")
-        type("alerts")
-        servers("localhost:9200")
+destination d_elasticsearch_http {
+    elasticsearch-http(
+        index("syslog-ng")
+        user("syslog-ng")
+        password("UN_MOT_DE_PASSE_SECURISE")
+        url("https://localhost:9200/_bulk")
+        tls(
+            ca-file("/etc/elasticsearch/certs/http_ca.crt")
+            peer-verify(yes)
+        )
+        template("$(format-json --key index)\n$(format-json --scope rfc5424 --scope dot-nv-pairs --scope nv-pairs --rekey .* --shift 1 --cast)\n")
     );
 };
 
 log {
     source(s_snort);
-    destination(d_elasticsearch);
+    destination(d_elasticsearch_http);
 };
 ```
 
@@ -153,7 +159,7 @@ output alert_syslog: LOG_AUTH LOG_ALERT
 Relancer Snort :
 
 ```bash
-sudo snort -c /etc/snort/snort.conf -i eth0
+sudo snort -c /etc/snort/snort.conf -i ens33
 ```
 
 #### 🔧 Vérifier syslog-ng (fichier `/etc/syslog-ng/syslog-ng.conf`) :
