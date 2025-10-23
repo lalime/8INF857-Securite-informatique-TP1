@@ -81,6 +81,15 @@ Bien que l'installation détaillée dépasse le cadre de ce document, voici les 
 2.  Utiliser l'outil **Visualize** pour construire des graphiques et des métriques basées sur les champs d'alerte IDS ou les logs critiques.
 3.  Assembler les visualisations dans un **Dashboard** dédié à la sécurité et aux anomalies.
 
+
+### [Étape 6 : Installation de Suricata ](INSTALL_SURICATA.md)
+
+- Etapes d'installation de Suricata sous linux 
+
+
+### [Étape 7 : Guide Attaques ](GUIDE_ATTAQUES.md)
+
+- Guide pratique — Scénarios d’attaques et preuves 
 ---
 
 ## 📈 Avantages du Projet
