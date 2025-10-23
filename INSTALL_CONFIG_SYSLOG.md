@@ -39,13 +39,24 @@ $ yum install syslog-ng
 Supprimez le rsyslog fourni avec EC2, puis installez syslog-ng.
 
 ```
-$ sudo rpm -e --nodeps rsyslog$ sudo yum install --enablerepo=epel syslog-ng$ sudo yum install --enablerepo=epel syslog-ng-libdbi$ sudo /etc/init.d/syslog-ng start
+$ sudo rpm -e --nodeps rsyslog$ sudo yum install --enablerepo=epel syslog-ng
+```
+```
+$ sudo yum install --enablerepo=epel syslog-ng-libdbi
+```
+```
+$ sudo /etc/init.d/syslog-ng start
 ```
 
 **Vérifiez la version installée de syslog-ng :**
 
 ```
-$ syslog-ng --versionsyslog-ng 3 (3.13.2)Config version: 3.13
+$ syslog-ng --version
+```
+
+```info
+syslog-ng 3 (3.13.2)
+Config version: 3.13
 ```
 
 **Assurez-vous que votre serveur syslog-ng fonctionne correctement :**
@@ -53,7 +64,15 @@ $ syslog-ng --versionsyslog-ng 3 (3.13.2)Config version: 3.13
 Ces commandes devraient renvoyer des messages de réussite. 
 
 ```
-$ service syslog-ng status$ sudo systemctl status syslog-ng.service$ journalctl -xe
+$ service syslog-ng 
+```
+
+```
+$ sudo systemctl status syslog-ng.service
+```
+
+```
+$ journalctl -xe
 ```
 
 ## Dépannage[​](#troubleshooting "Direct link to Troubleshooting")
